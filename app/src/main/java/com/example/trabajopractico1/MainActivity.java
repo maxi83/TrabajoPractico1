@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    DetectarUSB ll;
+   private DetectarUSB ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
