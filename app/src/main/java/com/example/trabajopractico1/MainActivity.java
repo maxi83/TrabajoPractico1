@@ -3,12 +3,13 @@ package com.example.trabajopractico1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-   private DetectarUSB ll;
+   private DetectarUsb llamada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +22,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        llamada=new DetectarUsb();
+        registerReceiver(llamada,new IntentFilter("android.hardware.usb.action.USB_STATE"));
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(llamada);
+    }
 }
 

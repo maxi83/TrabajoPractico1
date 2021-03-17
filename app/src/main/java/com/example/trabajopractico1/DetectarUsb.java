@@ -7,14 +7,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
-public class DetectarUSB extends BroadcastReceiver {
+public class DetectarUsb extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getExtras().getBoolean("connected"))
-
-            Toast.makeText(context,"Se ha conectado/desconectado el USB. llamando al 4445397.", Toast.LENGTH_LONG).show();
+        boolean conect= intent.getAction().equals(Intent.ACTION_POWER_CONNECTED);
+        if (conect){
+            Toast.makeText(context,"Iniciando llamada al 2664676856.", Toast.LENGTH_LONG).show();
         Intent i = new Intent(Intent.ACTION_CALL);
-        i.setData(Uri.parse("tel:" + "4445397"));
+        i.setData(Uri.parse("tel: +54 2664616856"));
         context.startActivity(i);
+       }
     }
 }
